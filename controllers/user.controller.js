@@ -42,13 +42,13 @@ const fetchByTypeAndStatus = async(userTypeReq, userStatusReq, res) => {
             userType : userTypeReq,
             userStatus : userStatusReq
         });
+        return users;
     }catch(err){
         console.err(`Error while fetching the user for userType [${userTypeReq}] and userStatus [${userStatusReq}]`);
         res.sattus(500).send({
             message: "Some internal error occured."
         })
     }
-    return users;
 }
 
 const fetchByType = async (userTypeReq, res) => {
@@ -57,13 +57,13 @@ const fetchByType = async (userTypeReq, res) => {
         users = await User.find({
             userType: userTypeReq
         });
+        return users
     } catch (err) {
         console.err(`error while fetching the user for userType [${userTypeReq}] `);
         res.status(500).send({
             message: "Some internal error occured"
         })
     }
-    return users
 }
 
 const fetchByStatus = async (userStatusReq, res) => {
@@ -72,13 +72,13 @@ const fetchByStatus = async (userStatusReq, res) => {
         users = await User.find({
             userStatus: userStatusReq
         });
+        return users
     } catch (err) {
         console.err(`error while fetching the user for userStatus [${userStatusReq}] `);
         res.status(500).send({
             message: "Some internal error occured"
         })
     }
-    return users
 }
 
 // Fetch the list of all users
